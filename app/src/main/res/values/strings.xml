@@ -1,3 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BugLog</string>
+
+    <!-- Formulario -->
+    <string name="titulo_reportar">Formulario de Reporte de Bugs</string>
+    <string name="hint_nombre_juego">¿En qué juego apareció?</string>
+    <string name="label_plataforma">Plataforma:</string>
+    <string name="label_tipo_bug">Tipo de Bug:</string>
+    <string name="label_gravedad">Gravedad:</string>
+    <string name="hint_descripcion">Contanos qué pasó</string>
+    <string name="btn_reportar">Enviar Reporte</string>
+
+
+    <!-- Plataformas -->
+    <string-array name="plataformas">
+        <item>Seleccioná una plataforma</item>
+        <item>PC</item>
+        <item>PlayStation 5</item>
+        <item>PlayStation 4</item>
+        <item>Xbox Series S/X</item>
+        <item>Nintendo Switch</item>
+        <item>Nintendo Switch 2</item>
+        <item>Android</item>
+        <item>iOS</item>
+    </string-array>
+
+    <!-- Tipos de Bugs -->
+    <string name="tipo_grafico">Gráfico</string>
+    <string name="tipo_audio">Audio</string>
+    <string name="tipo_gameplay">Gameplay</string>
+
+    <string-array name="tipos_bug">
+        <item>Seleccioná un tipo de bug</item>
+        <item>@string/tipo_grafico</item>
+        <item>@string/tipo_audio</item>
+        <item>@string/tipo_gameplay</item>
+    </string-array>
+
+    <!-- Gravedad -->
+    <string name="gravedad_baja">Baja</string>
+    <string name="gravedad_media">Media</string>
+    <string name="gravedad_alta">Alta</string>
+
+    <!-- Mensajes de error -->
+    <string name="error_nombre_vacio">Por favor, ingrese el nombre del juego</string>
+    <string name="error_plataforma">Debe seleccionar una plataforma.</string>
+    <string name="error_tipo_bug">Debe seleccionar un tipo de bug.</string>
+    <string name="error_gravedad">Indique la gravedad del bug</string>
+    <string name="error_descripcion">Ingrese una breve descripción del error</string>
+    <string name="bug_reportado">¡Bug registrado con éxito!</string>
+
 </resources>

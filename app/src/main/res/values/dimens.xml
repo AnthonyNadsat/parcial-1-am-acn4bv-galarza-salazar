@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+
+    <dimen name="text_size_title">20sp</dimen>
+
+    <dimen name="input_height">48dp</dimen>
+    <dimen name="input_height_large">96dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+
+    <dimen name="corner_radius">8dp</dimen>
+</resources>
