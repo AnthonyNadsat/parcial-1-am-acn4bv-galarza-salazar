@@ -10,6 +10,7 @@
     <string name="label_gravedad">Gravedad:</string>
     <string name="hint_descripcion">Contanos qué pasó</string>
     <string name="btn_reportar">Enviar Reporte</string>
+    <string name="btn_ver_lista">Consultar Historial</string>
 
 
     <!-- Plataformas -->
@@ -49,5 +50,9 @@
     <string name="error_gravedad">Indique la gravedad del bug</string>
     <string name="error_descripcion">Ingrese una breve descripción del error</string>
     <string name="bug_reportado">¡Bug registrado con éxito!</string>
+
+    <!-- Historial de bugs -->
+    <string name="titulo_lista">Bugs reportados</string>
+    <string name="no_bugs">Reportá el primero para empezar</string>
 
 </resources>

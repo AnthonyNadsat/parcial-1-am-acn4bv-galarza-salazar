@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etNombreJuego, etDescripcion;
     private Spinner spPlataforma, spTipoBug;
     private RadioGroup rgGravedad;
-    private Button btnReportar;
+    private Button btnReportar, btnVerLista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +30,35 @@ public class MainActivity extends AppCompatActivity {
         spTipoBug     = findViewById(R.id.spTipoBug);
         rgGravedad    = findViewById(R.id.rgGravedad);
         btnReportar   = findViewById(R.id.btnReportar);
+        btnVerLista   = findViewById(R.id.btnVerLista);
 
-        // Evento obligatorio: click en Reportar
+
         btnReportar.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 reportar();
             }
         });
 
+        btnVerLista.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ListaBugsActivity.class));
+            }
+        });
     }
 
     private void reportar() {
         String nombre = etNombreJuego.getText().toString().trim();
         String desc   = etDescripcion.getText().toString().trim();
 
-        int posPlat = spPlataforma.getSelectedItemPosition();
-        int posTipo = spTipoBug.getSelectedItemPosition();
+        int posPlat = spPlataforma.getSelectedItemPosition(); // 0 = "Seleccione plataforma"
+        int posTipo = spTipoBug.getSelectedItemPosition();    // 0 = "Seleccione tipo"
+
         int checked = rgGravedad.getCheckedRadioButtonId();
         String gravedad = null;
         if (checked == R.id.rbBaja)  gravedad = getString(R.string.gravedad_baja);
         if (checked == R.id.rbMedia) gravedad = getString(R.string.gravedad_media);
         if (checked == R.id.rbAlta)  gravedad = getString(R.string.gravedad_alta);
+
 
         if (TextUtils.isEmpty(nombre)) { toast(R.string.error_nombre_vacio); return; }
         if (posPlat == 0)              { toast(R.string.error_plataforma);   return; }
@@ -61,13 +69,12 @@ public class MainActivity extends AppCompatActivity {
         String plataforma = spPlataforma.getSelectedItem().toString();
         String tipo       = spTipoBug.getSelectedItem().toString();
 
-
-        com.acn4bv.buglog.Bug nuevo = new com.acn4bv.buglog.Bug(nombre, plataforma, tipo, gravedad, desc);
-        com.acn4bv.buglog.BugRepository.add(nuevo);
+       Bug nuevo = new Bug(nombre, plataforma, tipo, gravedad, desc);
+        BugRepository.add(nuevo);
 
         toast(R.string.bug_reportado);
 
-
+        // Limpieza de formulario
         etNombreJuego.setText("");
         etDescripcion.setText("");
         spPlataforma.setSelection(0);

@@ -19,6 +19,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Pantalla 2: Lista -->
+        <activity
+            android:name=".ListaBugsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
