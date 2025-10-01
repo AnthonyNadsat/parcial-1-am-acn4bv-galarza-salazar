@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -32,6 +33,23 @@ public class MainActivity extends AppCompatActivity {
         btnReportar   = findViewById(R.id.btnReportar);
         btnVerLista   = findViewById(R.id.btnVerLista);
 
+        // Configurar Spinner de Plataforma con estilo personalizado
+        ArrayAdapter<CharSequence> adapterPlataforma = ArrayAdapter.createFromResource(
+                this,
+                R.array.plataformas,
+                R.layout.spinner_item
+        );
+        adapterPlataforma.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spPlataforma.setAdapter(adapterPlataforma);
+
+        // Configurar Spinner de Tipo de Bug con estilo personalizado
+        ArrayAdapter<CharSequence> adapterTipoBug = ArrayAdapter.createFromResource(
+                this,
+                R.array.tipos_bug,
+                R.layout.spinner_item
+        );
+        adapterTipoBug.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spTipoBug.setAdapter(adapterTipoBug);
 
         btnReportar.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
@@ -59,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         if (checked == R.id.rbMedia) gravedad = getString(R.string.gravedad_media);
         if (checked == R.id.rbAlta)  gravedad = getString(R.string.gravedad_alta);
 
-
         if (TextUtils.isEmpty(nombre)) { toast(R.string.error_nombre_vacio); return; }
         if (posPlat == 0)              { toast(R.string.error_plataforma);   return; }
         if (posTipo == 0)              { toast(R.string.error_tipo_bug);     return; }
@@ -69,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         String plataforma = spPlataforma.getSelectedItem().toString();
         String tipo       = spTipoBug.getSelectedItem().toString();
 
-       Bug nuevo = new Bug(nombre, plataforma, tipo, gravedad, desc);
+        Bug nuevo = new Bug(nombre, plataforma, tipo, gravedad, desc);
         BugRepository.add(nuevo);
 
         toast(R.string.bug_reportado);

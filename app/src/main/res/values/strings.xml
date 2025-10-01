@@ -33,9 +33,9 @@
 
     <string-array name="tipos_bug">
         <item>Seleccioná un tipo de bug</item>
-        <item>@string/tipo_grafico</item>
-        <item>@string/tipo_audio</item>
-        <item>@string/tipo_gameplay</item>
+        <item>Gráfico</item>
+        <item>Audio</item>
+        <item>Gameplay</item>
     </string-array>
 
     <!-- Gravedad -->

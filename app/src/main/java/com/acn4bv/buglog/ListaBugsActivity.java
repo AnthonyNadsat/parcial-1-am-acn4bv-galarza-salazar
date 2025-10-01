@@ -21,14 +21,17 @@ public class ListaBugsActivity extends AppCompatActivity {
         if (BugRepository.isEmpty()) {
             TextView empty = new TextView(this);
             empty.setText(getString(R.string.no_bugs));
+            empty.setTextColor(getColor(R.color.text_secondary));
+            empty.setTextSize(16f);
+            empty.setGravity(android.view.Gravity.CENTER);
+            empty.setPadding(0, 48, 0, 48);
             containerBugs.addView(empty);
             return;
         }
 
-        int marginTop = (int) getResources().getDimension(R.dimen.margin_small);
-        int padding   = (int) getResources().getDimension(R.dimen.padding_medium);
+        int marginTop = (int) getResources().getDimension(R.dimen.margin_medium);
+        int padding = (int) getResources().getDimension(R.dimen.padding_medium);
 
-        // Agregado DINÁMICO: por cada bug creamos una “card” desde Java
         for (Bug bug : BugRepository.all()) {
             LinearLayout card = new LinearLayout(this);
             card.setOrientation(LinearLayout.VERTICAL);
@@ -40,15 +43,19 @@ public class ListaBugsActivity extends AppCompatActivity {
             card.setLayoutParams(lp);
             card.setPadding(padding, padding, padding, padding);
 
+            // Título con info
             TextView titulo = new TextView(this);
-            titulo.setText(bug.getNombreJuego() + " • " + bug.getPlataforma()
-                    + " • " + bug.getTipo() + " • " + bug.getGravedad());
-            titulo.setTextSize(16f);
-            titulo.setTextColor(getColor(android.R.color.black));
+            titulo.setText(bug.getNombreJuego() + " • " + bug.getPlataforma() + " • " + bug.getTipo() + " • " + bug.getGravedad());
+            titulo.setTextSize(14f);
+            titulo.setTextColor(getColor(R.color.text_primary));
+            titulo.setTypeface(null, android.graphics.Typeface.BOLD);
 
+            // Descripción
             TextView cuerpo = new TextView(this);
             cuerpo.setText(bug.getDescripcion());
-            cuerpo.setTextColor(getColor(android.R.color.darker_gray));
+            cuerpo.setTextColor(getColor(R.color.text_secondary));
+            cuerpo.setTextSize(13f);
+            cuerpo.setPadding(0, 8, 0, 0);
 
             card.addView(titulo);
             card.addView(cuerpo);

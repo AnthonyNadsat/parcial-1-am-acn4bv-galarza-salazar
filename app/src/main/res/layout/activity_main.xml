@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    android:padding="@dimen/margin_medium">
+    android:padding="24dp">
 
+    <!-- Header con ícono y título -->
     <ImageView
-        android:id="@+id/imgHeader"
+        android:id="@+id/imgBugIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@mipmap/ic_launcher"
-        android:contentDescription="@string/app_name"
+        android:contentDescription="Bug Icon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -20,132 +21,184 @@
         android:id="@+id/tvTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/titulo_reportar"
+        android:text="Reporte de bugs"
         android:textColor="@color/text_primary"
-        android:textSize="@dimen/text_size_title"
-        android:layout_marginStart="@dimen/margin_small"
-        app:layout_constraintStart_toEndOf="@id/imgHeader"
-        app:layout_constraintTop_toTopOf="@id/imgHeader"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/imgBugIcon"
+        app:layout_constraintTop_toTopOf="@id/imgBugIcon"
+        app:layout_constraintBottom_toBottomOf="@id/imgBugIcon"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ScrollView
-        android:id="@+id/scrollForm"
+    <!-- Card del formulario -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardForm"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/imgHeader"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/margin_medium">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="24dp">
 
+            <!-- Campo nombre del juego -->
             <EditText
                 android:id="@+id/etNombreJuego"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/input_height"
+                android:layout_height="56dp"
                 android:background="@drawable/input_background"
-                android:hint="@string/hint_nombre_juego"
-                android:padding="@dimen/padding_small"/>
+                android:hint="¿En qué juego apareció?"
+                android:textColorHint="#6B7280"
+                android:textColor="#FFFFFF"
+                android:padding="16dp"/>
 
+            <!-- Label Plataforma -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_plataforma"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="@dimen/margin_small"/>
+                android:text="Plataforma"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
 
+            <!-- Spinner Plataforma -->
             <Spinner
                 android:id="@+id/spPlataforma"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/plataformas"/>
+                android:layout_height="56dp"
+                android:background="@drawable/input_background"
+                android:spinnerMode="dropdown"
+                android:popupBackground="#1F1F2E"/>
 
+
+            <!-- Label Tipo de Bug -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_tipo_bug"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="@dimen/margin_small"/>
+                android:text="Tipo de Bug"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
 
+            <!-- Spinner Tipo de Bug -->
             <Spinner
                 android:id="@+id/spTipoBug"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/tipos_bug"/>
+                android:layout_height="56dp"
+                android:background="@drawable/input_background"
+                android:spinnerMode="dropdown"
+                android:popupBackground="#1F1F2E"/>
 
+            <!-- Label Gravedad -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_gravedad"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="@dimen/margin_small"/>
+                android:text="Gravedad"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
 
+            <!-- RadioGroup Gravedad -->
             <RadioGroup
                 android:id="@+id/rgGravedad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rbBaja"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gravedad_baja"/>
-
-                <RadioButton
-                    android:id="@+id/rbMedia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gravedad_media"/>
-
-                <RadioButton
-                    android:id="@+id/rbAlta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gravedad_alta"/>
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/etDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/input_height_large"
-                android:background="@drawable/input_background"
-                android:hint="@string/hint_descripcion"
-                android:gravity="top|start"
-                android:padding="@dimen/padding_small"/>
-
-            <!-- Botones en LinearLayout (horizontal) -->
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/margin_medium">
+                android:gravity="center">
 
-                <Button
-                    android:id="@+id/btnReportar"
+                <RadioButton
+                    android:id="@+id/rbBaja"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/btn_reportar"/>
+                    android:text="Baja"
+                    android:textColor="@color/text_primary"
+                    android:buttonTint="@color/purple_accent"/>
 
-                <Space
-                    android:layout_width="@dimen/margin_small"
-                    android:layout_height="match_parent"/>
-
-
-                <Button
-                    android:id="@+id/btnVerLista"
+                <RadioButton
+                    android:id="@+id/rbMedia"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/btn_ver_lista"/>
+                    android:text="Media"
+                    android:textColor="@color/text_primary"
+                    android:buttonTint="@color/purple_accent"/>
 
-            </LinearLayout>
+                <RadioButton
+                    android:id="@+id/rbAlta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Alta"
+                    android:textColor="@color/text_primary"
+                    android:buttonTint="@color/purple_accent"/>
+            </RadioGroup>
+
+            <!-- Campo descripción -->
+            <EditText
+                android:id="@+id/etDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/input_background"
+                android:hint="Contanos qué pasó..."
+                android:textColorHint="#6B7280"
+                android:textColor="#FFFFFF"
+                android:gravity="top|start"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:inputType="textMultiLine"/>
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botones en la parte inferior -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cardForm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="bottom">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnVerLista"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Consultar historial"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_gradient"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnReportar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Enviar reporte"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_green"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
