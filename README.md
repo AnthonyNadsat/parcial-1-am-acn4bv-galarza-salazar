@@ -49,9 +49,11 @@ Luego abre el proyecto desde Android Studio
 ## 📱 Capturas de Pantalla
 
 ### Pantalla Principal - Formulario de Reporte
+<img width="390" height="995" alt="wireframe_form" src="https://github.com/user-attachments/assets/ec487ba9-3c0f-46d0-9b43-a54ab46e6c93" />
 <img width="525" height="1128" alt="formulario" src="https://github.com/user-attachments/assets/8cfac1d8-65a8-457a-8679-40257e965061" />
 
 ### Pantalla Secundaria - Historial de Bugs
+<img width="390" height="995" alt="wireframe_list" src="https://github.com/user-attachments/assets/3ef0142f-b04c-4e65-879b-96577f7fb6f7" />
 <img width="532" height="1154" alt="historial" src="https://github.com/user-attachments/assets/184119f2-7300-4f09-8c83-c635c17f9741" />
 
 
